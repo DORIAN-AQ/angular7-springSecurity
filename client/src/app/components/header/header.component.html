@@ -1,0 +1,14 @@
+<header>
+  <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
+  <div><a href="https://www.javainuse.com/spring/ang7-crud" class="navbar-brand">TutoFrom</a></div>
+  
+  <ul class="navbar-nav">
+    <li><a routerLink="/home" class="nav-link">HomePage</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/cities" class="nav-link">Cities</a></li>
+    <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+    <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
+  </ul>
+  
+  </nav>
+  
+</header>
