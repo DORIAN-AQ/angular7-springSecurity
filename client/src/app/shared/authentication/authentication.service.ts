@@ -14,12 +14,15 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   authenticate(username, password) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.http.get<User>('http://localhost:8080/validateLogin',{ headers }).pipe(
-      map(userData => {
-        sessionStorage.setItem('username', username);
-        let authString = 'Basic ' + btoa(username + ':' + password);
-        sessionStorage.setItem('basicauth', authString);
+    const body = {
+      username,
+      password
+    };
+
+    return this.http.post<any>('http://localhost:8080/authenticate', body)
+      .pipe(map(userData => {
+        sessionStorage.setItem('username',username);
+        sessionStorage.setItem('token', `Bearer ${userData.token}`);
         return userData;
       }));
   }

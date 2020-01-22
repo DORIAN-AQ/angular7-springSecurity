@@ -12,6 +12,6 @@ public class Login {
 	@GetMapping(produces = "application/json")
 	@RequestMapping({ "/validateLogin" })
 	public User validateLogin() {
-		return new User("User successfully authenticated");
+		return new User("Ok");
 	}
 }
